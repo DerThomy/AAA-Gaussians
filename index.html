@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="AAA-Gaussians: Anti-Aliased and Artifact-Free 3D Gaussian Rendering">
+    <meta name="keywords" content="Novel View Synthesis, Gaussian Splatting, Anti-Aliased">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="MQ7nIyTt49mj6xal2VaKGhHJJAzzLJcgqqcxnsg828c" />
+    <title>AAA-Gaussians</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBE8P6JJ8Q"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-MBE8P6JJ8Q');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="static/favicon/site.webmanifest">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/video-compare.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/video-comparison-slider@0.0.5/dist/video-comparison.min.js"></script>
+</head>
+
+<body>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title" style="margin: 3px; padding: 2px;"><span
+                                style="font-weight: lighter; margin: 0px;">AAA-Gaussians: Anti-Aliased and Artifact-Free 3D Gaussian Rendering</span>
+                        </h1>
+                        <h2 class="title is-3 publication-title"
+                            style="font-weight: 100; margin: 9px; padding: 2px; color: darkslategray;">
+                            Highlighted at ICCV 2025
+                        </h2>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><a
+                                    href="https://steimich96.github.io/"><strong>Michael
+                                    Steiner</strong></a><sup>* 1</sup></span> &emsp;
+                            <span class="author-block"><a href="https://scholar.google.com/citations?user=pMDepi0AAAAJ&hl=en"><strong>Thomas Köhler</strong></a><sup>*
+                                    1</sup></span> &emsp;
+                            <span class="author-block"><a href="https://r4dl.github.io">Lukas Radl</a><sup>
+                                    1</sup></span> &emsp;
+                            <span class="author-block"><a href="https://scholar.google.com/citations?user=J_Jm3Y4AAAAJ&hl=en">Felix Windisch</a><sup>
+                                    1</sup></span> &emsp;
+                            <span class="author-block"><a href="https://www.tugraz.at/institute/icg/research/team-schmalstieg/">Dieter Schmalstieg</a> <sup>1,3</sup></span>
+                            &emsp;
+                            <span class="author-block"><a href="https://www.markussteinberger.net/">Markus
+                                    Steinberger</a> <sup>1,2</sup></span>
+                        </div>
+
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>*</sup> Both authors contributed equally to this work!</span>
+                        </div>
+                        <br>
+                        <div class="is-size-6 publication-authors">
+                            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 2em; text-align: center;">
+                                <div style="min-width: 150px;">
+                                    <sup>1</sup> Graz University of Technology
+                                    <br>
+                                    <a href="https://www.tugraz.at/en/home">
+                                    <img style="height: 80px; padding-top: 5px;" src="static/logo/logo_lang-RGB.png" alt="TU Graz Logo">
+                                    </a>
+                                </div>
+
+                                <div style="min-width: 150px;">
+                                   <sup>2</sup>Huawei Technologies<br>
+                                   <a href="https://tugraz.elsevierpure.com/en/organisations/huawei-technologies-austria-gmbh-98631">
+                                   <img style="height: 80px; padding-top: 5px;" src="static/logo/huawei-logo.jpg" alt="Huawei Logo">
+                                   </a>
+                               </div>
+
+                                <div style="min-width: 150px;">
+                                    <sup>3</sup> University of Stuttgart<br>
+                                    <a href="https://www.uni-stuttgart.de/en/">
+                                    <img style="height: 70px; padding-top: 5px;" src="static/logo/unistuttgart-logo.jpg" alt="University of Stuttgart Logo">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="static/paper/AAA-Gaussians.pdf"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <svg class="svg-inline--fa fa-file-pdf fa-w-12" aria-hidden="true"
+                                                focusable="false" data-prefix="fas" data-icon="file-pdf" role="img"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
+                                                data-fa-i2svg="">
+                                                <path fill="currentColor"
+                                                    d="M181.9 256.1c-5-16-4.9-46.9-2-46.9 8.4 0 7.6 36.9 2 46.9zm-1.7 47.2c-7.7 20.2-17.3 43.3-28.4 62.7 18.3-7 39-17.2 62.9-21.9-12.7-9.6-24.9-23.4-34.5-40.8zM86.1 428.1c0 .8 13.2-5.4 34.9-40.2-6.7 6.3-29.1 24.5-34.9 40.2zM248 160h136v328c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V24C0 10.7 10.7 0 24 0h200v136c0 13.2 10.8 24 24 24zm-8 171.8c-20-12.2-33.3-29-42.7-53.8 4.5-18.5 11.6-46.6 6.2-64.2-4.7-29.4-42.4-26.5-47.8-6.8-5 18.3-.4 44.1 8.1 77-11.6 27.6-28.7 64.6-40.8 85.8-.1 0-.1.1-.2.1-27.1 13.9-73.6 44.5-54.5 68 5.6 6.9 16 10 21.5 10 17.9 0 35.7-18 61.1-61.8 25.8-8.5 54.1-19.1 79-23.2 21.7 11.8 47.1 19.5 64 19.5 29.2 0 31.2-32 19.7-43.4-13.9-13.6-54.3-9.7-73.6-7.2zM377 105L279 7c-4.5-4.5-10.6-7-17-7h-6v128h128v-6.1c0-6.3-2.5-12.4-7-16.9zm-74.1 255.3c4.1-2.7-2.5-11.9-42.8-9 37.1 15.8 42.8 9 42.8 9z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                <!-- Video Link. -->
+                                <span class="link-block">
+                                    <!-- Code Link. -->
+                                    <span class="link-block">
+                                        <a href="https://github.com/DerThomy/AAA-Gaussians"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fab fa-github"></i>
+                                            </span>
+                                            <span>Code</span>
+                                        </a>
+                                    </span>
+                                    <!-- Code Link. -->
+                                    <span class="link-block">
+                                        <a href="https://cloud.tugraz.at/index.php/s/fsDoKofW4T63xN2"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <svg class="svg-inline--fa fa-images fa-w-18" aria-hidden="true"
+                                                    focusable="false" data-prefix="far" data-icon="images" role="img"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                                    data-fa-i2svg="">
+                                                    <path fill="currentColor"
+                                                        d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v48H54a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6v-10h48zm42-336H150a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6V86a6 6 0 0 0-6-6zm6-48c26.51 0 48 21.49 48 48v256c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h384zM264 144c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40zm-72 96l39.515-39.515c4.686-4.686 12.284-4.686 16.971 0L288 240l103.515-103.515c4.686-4.686 12.284-4.686 16.971 0L480 208v80H192v-48z">
+                                                    </path>
+                                                </svg>
+                                            </span>
+                                            <span>Pre-Trained Models</span>
+                                        </a>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser.png" alt="Pipeline">
+      <h2 class="subtitle has-text-centered">
+        We enable artifact free rendering of Gaussian-Splatting models by introducing a novel 3D anti-aliasing filter and a stable view-space bounding method.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                        Although 3D Gaussian Splatting (3DGS) has revolutionized 3D reconstruction, it still faces challenges such as aliasing, projection artifacts, and view inconsistencies, primarily due to the simplification of treating splats as 2D entities. We argue that incorporating full 3D evaluation of Gaussians throughout the 3DGS
+pipeline can effectively address these issues while preserving rasterization efficiency. Specifically, we introduce an adaptive 3D smoothing filter to mitigate aliasing and present a stable view-space bounding method that eliminates popping artifacts when Gaussians extend beyond the view frustum. Furthermore, we promote tile-based culling to 3D with screen-space planes, accelerating rendering and reducing sorting costs for hierarchical rasterization. Our method achieves state-of-the-art quality on in-distribution evaluation sets and significantly outperforms other approaches for out-of-distribution views. Our qualitative evaluations further demonstrate the effective removal of aliasing, distortions, and popping artifacts, ensuring real-time, artifact-free rendering.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Video. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-max-desktop">
+                    <div class="hero-body">
+                        <h2 class="title is-3">Video</h2>
+                        <!-- <video id="teaser" preload="auto" autoplay muted loop height="100%">
+                            <source src="./video/supplemental.mp4"
+                                    type="video/mp4">
+                        </video> -->
+                        <figure class="image is-16by9">
+                            <iframe  class="has-ratio" width="100%" height="auto" src="https://www.youtube.com/embed/KEwxiN7zj7I?si=WjhwuQR792x_fU2b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Adaptive, Lower-Bounded 3D Anti-Aliasing Filter</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            We introduce a novel adaptive 3D anti-aliasing filter specifically designed for evaluating Gaussians
+                            in 3D via ray sampling—avoiding the distortion artifacts inherent in affine projection approximations.
+                            Previous 3D evaluation methods (e.g., [<a href="https://niujinshuchong.github.io/mip-splatting/">GOF, Yu et. al. 2024</a>] and [<a href="https://fhahlbohm.github.io/htgs/">Hahlbohm et. al. 2025</a>]) only apply a fixed 3D filter based on the closest training view to prevent over-sampling (following [<a href="https://niujinshuchong.github.io/mip-splatting/">Mip-Splatting, Yu et. al. 2024</a>]).
+                            However, they exhibit under-sampling aliasing artifacts when observing scene content from further away.
+                            In contrast, our filter dynamically adapts to the camera's sampling frequency by adjusting the Gaussian's 3D scale only perpendicular to the viewing ray, and is correctly lower-bounded by the fixed 3D filter based on training views.
+                            This preserves fine details and prevents oversmoothing or transparency artifacts, enabling consistent, artifact-free rendering even in challenging out-of-distribution scenarios.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-centered is-10 has-text-centered">
+                <h3 class="title is-4">Adaptive 3D Filter</h3>
+                <div class="vc-slider-container">
+                    <video preload="auto" playsinline autoplay muted loop vc-caption="Fixed 3D Filter only">
+                    <source src="video/aliasing_lf/bicycle_train_filter.mp4">
+                    </video>
+                    <video preload="auto" playsinline autoplay muted loop vc-caption="Ours">
+                    <source src="video/aliasing_lf/bicycle_full_filter.mp4">
+                    </video>
+                </div>
+                <span>(A stuttering or out-of-sync video is usually resolve by reloading the page)</span>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-centered is-10">
+                <h3 class="title is-4">Fixed 3D Filter (lower-bound based on training views)</h3>
+                <div class="vc-slider-container">
+                    <video preload="auto" playsinline autoplay muted loop vc-caption="Ours w/o Fixed 3D Filter">
+                    <source src="video/aliasing_hf/garden_vid_alias.mp4">
+                    </video>
+                    <video preload="auto" playsinline autoplay muted loop vc-caption="Ours">
+                    <source src="video/aliasing_hf/garden_vid_smooth.mp4">
+                    </video>
+                </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Robust View-Space Bounding</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            To eliminate pop-in artifacts that appear due to incorrect frustum culling and bounding, we propose a novel view-space bounding method for 3D Gaussians.
+                            Unlike prior approaches [<a href="https://fhahlbohm.github.io/htgs/">Hahlbohm et. al. 2025</a>] that fit bounds in screen space and discard Gaussians extending beyond the near or far planes, our method performs bounding directly in view space using angular limits.
+                            This allows us to robustly handle Gaussians that partially extend outside the view frustum, preventing excessive and incorrect culling.
+                            The result is stable, artifact-free rendering when navigating close to scene content or using wide fields of view, where previous methods suffer from abrupt pop-in effects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-centered is-10">
+                    <h3 class="title is-4">Pop-In</h3>
+                    <div class="vc-slider-container">
+                        <video playsinline autoplay muted loop vc-caption="HTGS*">
+                        <source preload="auto" src="video/pop_in/trans_ms_ft_ugly.mp4">
+                        </video>
+                        <video playsinline autoplay muted loop vc-caption="Ours">
+                        <source preload="auto" src="video/pop_in/trans_ms_ft_nice.mp4">
+                        </video>
+                    </div>
+                    *We used a Mini-Splatting model resulting in larger Gaussians and more noticable artifacts.
+                </div>
+            </div>
+        </div>
+        <!--/ Image Comparisons / Stylization. -->
+    </section>
+
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <div class="content has-text-justified">
+                <p>
+                </p>
+            </div>
+            <pre><code id="citation_text">
+@inproceedings{steiner2025aaags,
+    author    = {Steiner, Michael and K{\"o}hler, Thomas and Radl, Lukas and Windisch, Felix and Schmalstieg, Dieter and Steinberger, Markus},
+    title     = {{AAA-Gaussians: Anti-Aliased and Artifact-Free 3D Gaussian Rendering}},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    year      = {2025}
+}
+            </code></pre>
+            <clipboard-copy aria-label="Copy"
+                class="clipcopy ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center"
+                data-copy-feedback="Copied!" data-tooltip-direction="w" value="" tabindex="0" role="button"
+                onclick="copytoclip()" id="clip-copy" style="position: absolute; top: 60px; right: 10px;">
+                <svg id='svg_cp' aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16"
+                    data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+                    <path id='clipboard1'
+                        d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path id='clipboard2'
+                        d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                    <path id='checkbox1' class="is-hidden"
+                        d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                </svg>
+            </clipboard-copy>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+
+            <!-- Image Comparisons. -->
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <!-- Concurrent Work. -->
+                    <div class="columns is-centered">
+                        <div class="column is-full-width">
+                            <h2 class="title is-3">Related Work</h2>
+
+                            <div class="content has-text-justified">
+                                <p>[<a href="https://niujinshuchong.github.io/mip-splatting/">Mip-Splatting, Yu et. al. 2024</a>]
+                                    Z. Yu, A. Chen, B. Huang, T. Sattler and A. Geiger, <b>Mip-Splatting: Alias-Free 3D Gaussian Splatting</b>,
+                                    in <i>Proc. IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)</i>, 2024, pp. 19447-19456.
+                                </p>
+                                <p>[<a href="https://github.com/autonomousvision/gaussian-opacity-fields">GOF, Yu et. al. 2024</a>]
+                                    Z. Yu, T. Sattler and A. Geiger, <b>Gaussian Opacity Fields: Efficient Adaptive Surface Reconstruction in Unbounded Scenes</b>,
+                                    in <i>ACM Transactions on Graphics</i>, 2024.
+                                </p>
+                                <p>[<a href="https://fhahlbohm.github.io/htgs/">Hahlbohm et. al. 2025</a>]
+                                    Hahlbohm, F., Friederichs, F., Weyrich, T., Franke, L., Kappel, M., Castillo, S., Stamminger, M., Eisemann, M. and Magnor, M.,
+                                    <b>Efficient Perspective-Correct 3D Gaussian Splatting Using Hybrid Transparency</b>,
+                                    <i>Computer Graphics Forum</i>, vol.44, no.2, 2025.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Concurrent Work. -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            We thank the authors of <a href="https://nerfies.github.io/">Nerfies</a> who kindly open
+                            sourced the template of this website.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
