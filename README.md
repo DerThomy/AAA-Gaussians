@@ -15,7 +15,7 @@
 
 ![Teaser image](assets/teaser.png)
 
-This repository contains the official authors implementation associated with the paper "AAA-Gaussians: Anti-Aliased and Artifact-Free 3D Gaussian Rendering", which can be found [here TODO](https://derthomy.github.io/AAA-Gaussians). 
+This repository contains the official authors implementation associated with the paper "AAA-Gaussians: Anti-Aliased and Artifact-Free 3D Gaussian Rendering", which can be found [here](https://derthomy.github.io/AAA-Gaussians). 
 
 <br>
 
