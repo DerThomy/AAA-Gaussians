@@ -269,7 +269,6 @@ pipeline can effectively address these issues while preserving rasterization eff
             </div>
             <div class="columns is-centered has-text-centered">
                 <div class="column is-centered is-10">
-                    <h3 class="title is-4">Pop-In</h3>
                     <div class="vc-slider-container">
                         <video playsinline autoplay muted loop vc-caption="HTGS*">
                         <source preload="auto" src="video/pop_in/trans_ms_ft_ugly.mp4">
@@ -279,6 +278,57 @@ pipeline can effectively address these issues while preserving rasterization eff
                         </video>
                     </div>
                     *We used a Mini-Splatting model resulting in larger Gaussians and more noticable artifacts.
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Distortion Free Rendering</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Distortion artifacts in 3D Gaussian Splatting often stem from the affine projection approximation of 3D Gaussians as 2D splats, which becomes especially problematic under extreme camera settings such as wide fields of view or viewpoints far from the training distribution. These artifacts manifest as stretched or warped details, particularly near image borders, and can be exacerbated by affine projection errors.
+                            To address this, we adapt the rendering approach by [<a href="https://fhahlbohm.github.io/htgs/">Hahlbohm et. al. 2025</a>], which
+                            evaluates Gaussians fully in 3D, ensuring geometry is preserved across the entire image plane, even for out-of-distribution views, resulting in stable, projection-accurate rendering without stretching or warping.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-centered is-10">
+                    <div class="vc-slider-container">
+                        <video playsinline autoplay muted loop vc-caption="Ours">
+                            <source preload="auto" src="video/distortion/no_distortion.mp4">
+                        </video>
+                        <video playsinline autoplay muted loop vc-caption="3DGS">
+                            <source preload="auto" src="video/distortion/distortion.mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Popping</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Popping artifacts in 3D Gaussian Splatting often arise from global depth sorting, where changes in camera perspective can abruptly alter the blend order of overlapping Gaussians.
+                            This results in distracting flicker or sudden shifts in appearance. AAA-Gaussians resolves this by employing hierarchical per-pixel sorting [<a href="https://r4dl.github.io/StopThePop/">Radl et. al. 2024</a>], 
+                            which more accurately determines the correct blending order on a per-ray basis. To retain high performance, hierarchical sorting is combined with tile-based culling, which efficiently reduces the number of Gaussians that need to be sorted per pixel.
+                            Therefore, we adapt our novel 3D frustum bounding to tile-based culling, enabling accurate sorting of Gaussians in 3D while maintaining high rendering performance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-centered is-10">
+                    <div class="vc-slider-container">
+                        <video playsinline autoplay muted loop vc-caption="3DGS">
+                            <source preload="auto" src="video/popping/popping.mp4">
+                        </video>
+                        <video playsinline autoplay muted loop vc-caption="Ours">
+                            <source preload="auto" src="video/popping/no_popping.mp4">
+                        </video>
+                    </div>
                 </div>
             </div>
         </div>
@@ -342,9 +392,12 @@ pipeline can effectively address these issues while preserving rasterization eff
                                     in <i>ACM Transactions on Graphics</i>, 2024.
                                 </p>
                                 <p>[<a href="https://fhahlbohm.github.io/htgs/">Hahlbohm et. al. 2025</a>]
-                                    Hahlbohm, F., Friederichs, F., Weyrich, T., Franke, L., Kappel, M., Castillo, S., Stamminger, M., Eisemann, M. and Magnor, M.,
+                                    F. Hahlbohm, F. Friederichs, T. Weyrich, L. Franke, M. Kappel, S. Castillo, M. Stamminger, M. Eisemann, and M. Magnor,
                                     <b>Efficient Perspective-Correct 3D Gaussian Splatting Using Hybrid Transparency</b>,
                                     <i>Computer Graphics Forum</i>, vol.44, no.2, 2025.
+                                </p>
+                                <p>[<a href="https://r4dl.github.io/StopThePop/">Radl et. al. 2024</a>]
+                                    L. Radl, M. Steiner, M. Parger, A. Weinrauch, B. Kerbl, and M. Steinberger, <b>StopThePop: Sorted Gaussian Splatting for View-Consistent Real-time Rendering</b>, ACM Transactions on Graphics, vol. 43, no. 4, art. no. 64, 2024.
                                 </p>
                             </div>
                         </div>
