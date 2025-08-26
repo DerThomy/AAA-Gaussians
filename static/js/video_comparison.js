@@ -97,8 +97,7 @@ function resizeAndPlay(element)
   cv.width = element.videoWidth/2;
   cv.height = element.videoHeight;
   element.play();
-  element.style.position = "absolute";
-  element.style.visibility = "hidden";
+  element.style.height = "0px";
     
   playVids(element.id);
 }
