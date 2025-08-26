@@ -230,7 +230,7 @@ pipeline can effectively address these issues while preserving rasterization eff
                 <div class="column is-centered is-10 has-text-centered">
                 <h3 class="title is-4">Adaptive 3D Filter</h3>
                 <div class="column is-full-width">
-                    <video class="video" id="aliasinglf" playsinline autoplay muted loop src="video/aliasing_lf/split.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                    <video class="video" id="aliasinglf" preload="auto" playsinline autoplay muted loop src="video/aliasing_lf/split.mp4" onplay="resizeAndPlay(this)" style="visibility: hidden;position: absolute;"></video>
                     <canvas class="videoMerge" id="aliasinglfMerge" width="100%"></canvas>
                 </div>
                 </div>
@@ -239,7 +239,7 @@ pipeline can effectively address these issues while preserving rasterization eff
                 <div class="column is-centered is-10">
                 <h3 class="title is-4">Fixed 3D Filter (lower-bound based on training views)</h3>
                 <div class="column is-full-width">
-                    <video class="video" id="aliasinghf" playsinline autoplay muted loop src="video/aliasing_hf/split.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                    <video class="video" id="aliasinghf" playsinline autoplay muted loop src="video/aliasing_hf/split.mp4" onplay="resizeAndPlay(this)" style="visibility: hidden;position: absolute;"></video>
                     <canvas class="videoMerge" id="aliasinghfMerge" width="100%"></canvas>
                 </div>
                 </div>
@@ -261,7 +261,7 @@ pipeline can effectively address these issues while preserving rasterization eff
             <div class="columns is-centered has-text-centered">
                 <div class="column is-centered is-10">
                     <div class="column is-full-width">
-                    <video class="video" id="pop_in" playsinline autoplay muted loop src="video/pop_in/split.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                    <video class="video" id="pop_in" playsinline autoplay muted loop src="video/pop_in/split.mp4" onplay="resizeAndPlay(this)" style="visibility: hidden;position: absolute;"></video>
                     <canvas class="videoMerge" id="pop_inMerge" width="100%"></canvas>
                 </div>
                     *We used a Mini-Splatting model resulting in larger Gaussians and more noticable artifacts.
@@ -283,7 +283,7 @@ pipeline can effectively address these issues while preserving rasterization eff
             <div class="columns is-centered has-text-centered">
                 <div class="column is-centered is-10">
                     <div class="column is-full-width">
-                    <video class="video" id="distortion" playsinline autoplay muted loop src="video/distortion/split.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                    <video class="video" id="distortion" playsinline autoplay muted loop src="video/distortion/split.mp4" onplay="resizeAndPlay(this)" style="visibility: hidden;position: absolute;"></video>
                     <canvas class="videoMerge" id="distortionMerge" width="100%"></canvas>
                 </div>
                 </div>
@@ -305,7 +305,7 @@ pipeline can effectively address these issues while preserving rasterization eff
             <div class="columns is-centered has-text-centered">
                 <div class="column is-centered is-10">
                     <div class="column is-full-width">
-                        <video class="video" id="popping" playsinline autoplay muted loop src="video/popping/split.mp4" onplay="resizeAndPlay(this)" style="height: 0px;"></video>
+                        <video class="video" id="popping" playsinline autoplay muted loop src="video/popping/split.mp4" onplay="resizeAndPlay(this)" style="visibility: hidden;position: absolute;"></video>
                         <canvas class="videoMerge" id="poppingMerge" width="100%"></canvas>
                     </div>
                 </div>

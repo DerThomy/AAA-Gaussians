@@ -22,6 +22,7 @@ function playVids(videoId) {
     var mergeContext = videoMerge.getContext("2d");
     
     if (vid.readyState > 3) {
+        vid.muted = true;
         vid.play();
 
         function trackLocation(e) {
@@ -32,7 +33,7 @@ function playVids(videoId) {
         function trackLocationTouch(e) {
             // Normalize to [0, 1]
             bcr = videoMerge.getBoundingClientRect();
-            position = ((e.touches[0].pageX - bcr.x) / bcr.width);
+            position = ((e.touches[0].pageX - (bcr.x + window.scrollX)) / bcr.width);
         }
 
         videoMerge.addEventListener("mousemove",  trackLocation, false); 
@@ -96,7 +97,8 @@ function resizeAndPlay(element)
   cv.width = element.videoWidth/2;
   cv.height = element.videoHeight;
   element.play();
-  element.style.height = "0px";  // Hide video without stopping it
+  element.style.position = "absolute";
+  element.style.visibility = "hidden";
     
   playVids(element.id);
 }
