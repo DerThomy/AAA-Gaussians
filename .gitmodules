@@ -3,7 +3,7 @@
 	url = https://gitlab.inria.fr/bkerbl/simple-knn.git
 [submodule "submodules/diff-gaussian-rasterization"]
 	path = submodules/diff-gaussian-rasterization
-	url = git@github.com:DerThomy/Consistent-3DGS-Rasterization.git
+	url = git@github.com:DerThomy/AAA-Gaussians-Rasterization.git
 [submodule "SIBR_viewers"]
 	path = SIBR_viewers
-	url = git@github.com:DerThomy/Consistent-3DGS-SIBR.git
+	url = git@github.com:DerThomy/AAA-Gaussians-SIBR.git
