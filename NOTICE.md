@@ -9,7 +9,7 @@ This derivative work remains under the same research-only usage restrictions.
 
 The contents of the files ```submodules/diff-gaussian-rasterization/cuda_rasterizer/utils.*``` are based on publicly available code from [3D Gaussian Splatting as Markov Chain Monte Carlo](https://github.com/ubc-vision/3dgs-mcmc) authored by Shakiba Kheradmand and contributors, which falls under the same research-only usage restrictions.
 
-The contents of the file ```utils/mip_filter.py``` are based on publicly available code from [Mip-Splatting](https://github.com/autonomousvision/mip-splatting) authored by Shakiba Kheradmand and contributors, which falls under the same research-only usage restrictions.
+The contents of the file ```utils/mip_filter.py``` are based on publicly available code from [Mip-Splatting](https://github.com/autonomousvision/mip-splatting) authored by Zehao Yu and contributors, which falls under the same research-only usage restrictions.
 
 See `LICENSE.md` for details.
 
