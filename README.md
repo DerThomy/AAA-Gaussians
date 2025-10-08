@@ -381,7 +381,7 @@ cmake --build build -j24 --target install
 
 After extracting or installing the viewers, you may run the compiled ```SIBR_gaussianViewer_app[_config]``` app in ```<SIBR install dir>/bin```, e.g.: 
 ```shell
-./<SIBR install dir>/bin/SIBR_gaussianViewer_app -m <path to trained model> --rendering-size <rendering size, e.g. 1920 1080>
+./<SIBR install dir>/bin/SIBR_gaussianViewer_app -m <path to trained model> --filter3d --rendering-size <rendering size, e.g. 1920 1080>
 ```
 
 It should suffice to provide the ```-m``` parameter pointing to a trained model directory. Alternatively, you can specify an override location for training input data using ```-s```. Combine it with ```--force-aspect-ratio``` if you want the exact resolution and don't mind image distortion.
